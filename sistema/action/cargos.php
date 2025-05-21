@@ -22,10 +22,14 @@ switch ($acao) {
        
         #validação se o ID foi informado, declarado e numerico
         if ( isset($id) && !empty($id) && is_numeric($id)) {
-            exit('aqui vc faz UPDATE');
+            $sql = "UPDATE cargos SET Nome = '$nome', TetoSalarial = $tetosalarial WHERE CargoID = $id;";
+            mysqli_query($conn,$sql); 
+            
         }
         else{
-            exit('aqui vc faz INSERT INTO');
+            $sql = "INSERT INTO cargos (Nome,TetoSalarial) VALUE('$nome',$tetosalarial);";
+            mysqli_query($conn,$sql);
+            
         }
         break;
  

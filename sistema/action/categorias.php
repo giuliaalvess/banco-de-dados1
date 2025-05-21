@@ -15,11 +15,16 @@ switch ($acao) {
 
         break;
     case 'salvar':
+        $nome = $_POST['nome'];
+        $descricao = $_POST['descricao']
+
         //validação se o ID fo informado, declarado e numerico
         if (isset($id) && !empty($id) && is_numeric($id)){ //!empty id nao vazio (!)=nao
-            exit ('Aqui vc faz UPDATE');
+            $sql = "UPDATE INTO (nome,descricao) VALUE('$nome','$descricao');";
+            mysqli_query($conn,$sql);
         }else {
-            exit('Aqui vc faz INSERT INTO');
+            $sql = "INSERT INTO (nome, descricao) VALUE('$nome','$descricao');";
+            mysqli_query($conn,$sql);
         }
         break;
 

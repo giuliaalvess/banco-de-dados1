@@ -14,11 +14,17 @@ switch ($acao) {
         mysqli_query($conn,$sql);
         break;
     case 'salvar':
+        $nome = $_POST['nomeProduto'];
+            $categoria = $_POST['nomeCategoria'];
+            $preco = $_POST['valorPreco'];
+
         //validação se o ID fo informado, declarado e numerico
         if (isset($id) && !empty($id) && is_numeric($id)){ //!empty id nao vazio (!)=nao
-            exit ('Aqui vc faz UPDATE');
+            $sql = "UPDATE INTO (nomeProduto, nomeCategoria, valorPreco) VALUE('$nome','$categoria', $preco);";
+            mysqli_query($conn,$sql);
         }else {
-            exit('Aqui vc faz INSERT INTO');
+             $sql = "INSERT INTO (nomeProduto, nomeCategoria, valorPreco) VALUE('$nome','$categoria', $preco);";
+            mysqli_query($conn,$sql);
         }
         break;
 
